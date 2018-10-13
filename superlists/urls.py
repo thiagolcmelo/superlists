@@ -19,5 +19,5 @@ from django.urls import path
 from lists.urls import urlpatterns as lists_urlpatterns
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
 ] + lists_urlpatterns
