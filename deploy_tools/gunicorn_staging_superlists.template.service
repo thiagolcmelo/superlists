@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn server for SITENAME
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=superlists
+WorkingDirectory=/home/superlists/sites/SITENAME/source
+ExecStart=/home/superlists/sites/SITENAME/virtualenv/bin/gunicorn --bind unix:/tmp/SITENAME.socket superlists.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
