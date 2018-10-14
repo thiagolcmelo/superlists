@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import sys
+import os
 import time
 import unittest
 
@@ -13,10 +13,11 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     @classmethod
     def setUpClass(cls):
-        for arg in sys.argv:
-            if 'liveserver' in arg:
-                cls.server_url = 'http://' + arg.split('=')[1]
-                return
+        staging_server_url = os.environ.get("STAGING_SERVER")
+        if staging_server_url:
+            cls.server_url = 'http://' + staging_server_url
+            cls.live_server_url = ""
+            return
         super().setUpClass()
         cls.server_url = cls.live_server_url
 
