@@ -23,11 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'sdl96xexn7ddvzh#a9!v6_%d4$(dy%8ki4+xhejyenwgw+j8hj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = False
-DEBUG = True
+DEBUG = False
 
 # Needed when DEBUG=False
-#ALLOWED_HOSTS = ['superlists-thiagolcmelo.tk']
 ALLOWED_HOSTS = []
 
 
