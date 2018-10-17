@@ -44,3 +44,10 @@ sudo ln -s /etc/nginx/sites-available/$SITENAME /etc/nginx/sites-enabled/$SITENA
 sudo service nginx reload
 sed "s/SITENAME/$SITENAME/g" "$SITEDAEN.template.service" | sudo tee "/etc/systemd/system/$SITEDAEN.service"
 sudo systemctl start $SITEDAEN
+
+## Git realease directives
+
+$ git tag LIVE
+$ export TAG=`date +DEPLOYED-%F/%H%M`
+$ git tag $TAG
+$ git push origin LIVE $TAG
