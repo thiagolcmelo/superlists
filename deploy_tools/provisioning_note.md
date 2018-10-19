@@ -43,6 +43,7 @@ sed "s/SITENAME/$SITENAME/g" nginx.template.conf | sudo tee /etc/nginx/sites-ava
 sudo ln -s /etc/nginx/sites-available/$SITENAME /etc/nginx/sites-enabled/$SITENAME
 sudo service nginx reload
 sed "s/SITENAME/$SITENAME/g" "$SITEDAEN.template.service" | sudo tee "/etc/systemd/system/$SITEDAEN.service"
+sudo systemctl enable $SITEDAEN
 sudo systemctl start $SITEDAEN
 
 ## Git realease directives
@@ -51,3 +52,4 @@ $ git tag LIVE
 $ export TAG=`date +DEPLOYED-%F/%H%M`
 $ git tag $TAG
 $ git push origin LIVE $TAG
+$ git log --graph --oneline --decorate
