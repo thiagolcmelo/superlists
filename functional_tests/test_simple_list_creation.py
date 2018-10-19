@@ -36,7 +36,7 @@ class NewVisitorTest(FunctionalTest):
         time.sleep(1)  # wait for refresh
         edith_list_url = self.browser.current_url
         self.assertRegex(edith_list_url, '/lists/.+')
-        self.check_fow_row_in_list_table('1: Buy peacock feathers')
+        self.check_for_row_in_list_table('1: Buy peacock feathers')
 
         # There is still a text box inviting her to add another item.
         # She enters "Use peacock feathers to make a fly" (Edith is very
@@ -47,8 +47,8 @@ class NewVisitorTest(FunctionalTest):
 
         # the page updates again, and now shows both items on her lists
         time.sleep(1)  # wait for refresh
-        self.check_fow_row_in_list_table('1: Buy peacock feathers')
-        self.check_fow_row_in_list_table(
+        self.check_for_row_in_list_table('1: Buy peacock feathers')
+        self.check_for_row_in_list_table(
             '2: Use peacock feathers to make a fly'
         )
 
