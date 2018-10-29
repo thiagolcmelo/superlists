@@ -15,7 +15,9 @@ class ItemValidationTest(FunctionalTest):
         # an empty list item. She hits Enter on the empty input box
         self.browser.get(self.server_url)
         input_elem = self.get_item_input_box()
-        input_elem.send_keys(Keys.ENTER)
+        # input_elem.send_keys(Keys.ENTER)
+        form = self.browser.find_element_by_css_selector('form')
+        form.submit()
         time.sleep(1)
 
         # The home page refreshes, and there is an error message saying
@@ -32,7 +34,9 @@ class ItemValidationTest(FunctionalTest):
 
         # Perversely, she now decides to submit a second blank list item
         input_elem = self.get_item_input_box()
-        input_elem.send_keys(Keys.ENTER)
+        # input_elem.send_keys(Keys.ENTER)
+        form = self.browser.find_element_by_css_selector('form')
+        form.submit()
         time.sleep(1)
 
         # She receives a similar warning on the list page
@@ -44,5 +48,6 @@ class ItemValidationTest(FunctionalTest):
         input_elem = self.get_item_input_box()
         input_elem.send_keys('Make tea')
         input_elem.send_keys(Keys.ENTER)
+        time.sleep(1)
         self.check_for_row_in_list_table('1: Buy milk')
         self.check_for_row_in_list_table('2: Make tea')
